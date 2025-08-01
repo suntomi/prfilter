@@ -1,0 +1,9 @@
+version = "0.1.0"
+name = "deplo-prfilter"
+author = { name = "Takehiro Iyatomi", email = "iyatomi@gmail.com" }
+entrypoints = {
+    step = {
+        linux = ["sh", "./entrypoint.sh"]
+        macos = ["sh", "./entrypoint.sh"]
+    }
+}
