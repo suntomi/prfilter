@@ -20,23 +20,23 @@ if [ "${COMMAND}" = "filter_event" ]; then
   fi
   # author can be regex
   if [[ "${input}" =~ ${author} ]]; then
-    echo "{\"user\": \"${input}\"}"
+    echo "{\"author\": \"${input}\"}"
     exit 0
   fi
 elif [ "${COMMAND}" = "filter_context" ]; then
-  CONTEXT="$3"
-  CONDITION="$4"
-  echo "context: ${CONTEXT}" >&2
+  CONDITION="$3"
+  CONTEXT="$4"
   echo "condition: ${CONDITION}" >&2
-  user=$(printf '%s' "${CONTEXT}" | jq -r '.user // ""')
-  expect=$(printf '%s' "${CONDITION}" | jq -r '.user // ""')
-  echo "user: [${user}]" >&2
+  echo "context: ${CONTEXT}" >&2
+  author=$(printf '%s' "${CONTEXT}" | jq -r '.author // ""')
+  expect=$(printf '%s' "${CONDITION}" | jq -r '.author // ""')
+  echo "author: [${author}]" >&2
   echo "expect: [${expect}]" >&2
   if [ -z "${expect}" ]; then
-    echo "fatal: No expect user configuration" >&2
+    echo "fatal: No expect author configuration" >&2
     exit 1
   fi
-  if [[ "${user}" =~ ${expect} ]]; then
+  if [[ "${author}" =~ ${expect} ]]; then
     echo "match"
     exit 0
   fi
