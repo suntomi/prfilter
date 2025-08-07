@@ -3,7 +3,7 @@ name = "deplo-prfilter"
 author = { name = "Takehiro Iyatomi", email = "iyatomi@gmail.com" }
 entrypoints = {
     workflow = {
-        linux = ["sh", "./entrypoint.sh"]
-        macos = ["sh", "./entrypoint.sh"]
+        linux = ["bash", "./entrypoint.sh"]
+        macos = ["bash", "./entrypoint.sh"]
     }
 }
